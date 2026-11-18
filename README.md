@@ -6,10 +6,10 @@ K J Somaiya College of Engineering, Vidyavihar, Mumbai · 2026-27
 ## Group Members
 | Name | Roll No. |
 |------|----------|
-| Zikra Siddiqui | [roll] |
-| Khushi Beluse | [roll] |
+| Zikra Siddiqui | 16034426013 |
+| Khushi Beluse | 16034426014 |
 
-Group No.: [X] · Paper (Overleaf): [link]
+Group No.: 6 · Paper (Overleaf): https://www.overleaf.com/project/6aa0ebae93da66992d11e99b/share#559474c353a72cda833d4a14b07b8419c5c308edaffecab0
 
 ## Problem Statement
 Sentiment analysis for regional Indian languages is less developed than for
@@ -28,7 +28,6 @@ runs a preliminary client-side differential privacy (DP-SGD) experiment.
   conflicting and cross-split duplicate texts removed.
   The cleaned test set has **6,675** sentences.
 - Federated split: 3 simulated clients with IID partitions of the training set.
-- Download/prepare: `[python src/prepare_data.py]`
 
 ## Methods
 - Model: MuRIL (`[google/muril-base-cased]`) with a classification head.
@@ -48,7 +47,7 @@ runs a preliminary client-side differential privacy (DP-SGD) experiment.
 | Seed | 42 | 42 | 42 |
 
 ## Repository Structure
-```
+
 README.md
 requirements.txt
 data/          # dataset or download script
@@ -57,28 +56,18 @@ notebooks/     # Colab notebooks
 checkpoints/   # best models (or Drive link)
 logs/          # training and console logs
 results/       # plots, tables, metrics, results PDF
-```
+
 
 ## Setup
-```bash
+
 git clone [repo-url]
 cd [repo]
 pip install -r requirements.txt
-```
+
 Tested on Google Colab, Tesla T4 GPU, PyTorch + Hugging Face Transformers
 ([versions]). Random seed: 42.
 
-## How to Run
-```bash
-python src/prepare_data.py
-python src/train_central.py  --seed 42
-python src/train_federated.py --algo fedavg  --mu 0    --clients 3 --rounds 3 --seed 42
-python src/train_federated.py --algo fedprox --mu 0.01 --clients 3 --rounds 3 --seed 42
-python src/train_dp.py --records_per_client 500 --epochs 2 --seed 42
-python src/evaluate.py        # tables and plots go to results/
-```
-(Or run `notebooks/[name].ipynb` in Colab, top to bottom.)
-Replace the commands with your real file names.
+
 
 ## Results (held-out test set, 6,675 sentences)
 | Model | Accuracy | Macro-P | Macro-R | Macro-F1 |
@@ -91,18 +80,10 @@ Replace the commands with your real file names.
   under 0.6 points and come from a single seed, so no method is claimed superior.
 - Neutral is the hardest class (F1 0.73–0.74).
 - DP pilot (ε ≈ 8, untuned) did not learn the task: 31.58% and 33.50% accuracy.
-- Full tables, class-wise results and plots are in `results/`
-  and the Results PDF `results/[file].pdf`.
-
-## Checkpoints and Logs
-- Checkpoints: `checkpoints/` or [Drive / Git LFS link]
-- Logs: `logs/`
 
 ## Limitations
 One dataset, 3 simulated IID clients, 3 rounds, one seed. FedNova, non-IID
 partitions, communication cost and secure aggregation were not evaluated.
 Federated models saw each record 3 times, the centralized model 2 times.
 
-## Paper
-"Federated Learning for Marathi Sentiment Classification",
-Z. Siddiqui, K. Beluse. [Overleaf link]
+
