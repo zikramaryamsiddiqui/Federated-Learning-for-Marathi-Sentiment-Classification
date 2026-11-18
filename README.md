@@ -53,9 +53,6 @@ requirements.txt
 data/          # dataset or download script
 src/           # preprocessing, training, FL, DP, evaluation
 notebooks/     # Colab notebooks
-checkpoints/   # best models (or Drive link)
-logs/          # training and console logs
-results/       # plots, tables, metrics, results PDF
 
 
 ## Setup
